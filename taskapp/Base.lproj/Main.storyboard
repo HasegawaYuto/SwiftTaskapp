@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rwD-19-Xb7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Fg4-wK-UfN" detailTextLabel="wtw-b3-2rs" style="IBUITableViewCellStyleSubtitle" id="s18-fw-e9i">
@@ -52,13 +52,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtP-4w-t7U">
+                                <rect key="frame" x="16" y="74" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CHv-BS-VOm"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rwD-19-Xb7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Qv5-mw-uGb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rwD-19-Xb7" secondAttribute="bottom" id="RI3-pD-woD"/>
-                            <constraint firstAttribute="trailing" secondItem="rwD-19-Xb7" secondAttribute="trailing" id="kAA-0X-a65"/>
-                            <constraint firstItem="rwD-19-Xb7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uu2-iq-22Q"/>
+                            <constraint firstItem="OtP-4w-t7U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="2I0-y7-92b"/>
+                            <constraint firstItem="rwD-19-Xb7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FAR-Zs-ssO"/>
+                            <constraint firstAttribute="trailing" secondItem="rwD-19-Xb7" secondAttribute="trailing" id="MXY-gH-Ayh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OtP-4w-t7U" secondAttribute="trailing" id="Yfn-nd-vP2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rwD-19-Xb7" secondAttribute="bottom" id="YzK-x1-nqH"/>
+                            <constraint firstItem="OtP-4w-t7U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dBq-4B-E78"/>
+                            <constraint firstItem="rwD-19-Xb7" firstAttribute="top" secondItem="OtP-4w-t7U" secondAttribute="bottom" constant="10" id="hkE-bb-X4u"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vNm-LK-Vni">
@@ -69,6 +81,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchField" destination="OtP-4w-t7U" id="uj4-D6-kDk"/>
                         <outlet property="tableView" destination="rwD-19-Xb7" id="t7x-BC-KIz"/>
                         <segue destination="sN6-PF-aoc" kind="show" identifier="cellSegue" id="jBA-aV-lPm"/>
                     </connections>
@@ -126,9 +139,16 @@
                                     <!--2017-11-17 04:40:43 +0000-->
                                 </date>
                             </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gj-yJ-IgO">
+                                <rect key="frame" x="16" y="436" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8gj-yJ-IgO" firstAttribute="top" secondItem="gkI-Wr-hqW" secondAttribute="bottom" constant="10" id="2BN-hn-RzV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V6F-S7-lxF" secondAttribute="trailing" id="4gN-T4-iHt"/>
                             <constraint firstItem="V6F-S7-lxF" firstAttribute="top" secondItem="UaO-1t-L7J" secondAttribute="bottom" constant="10" id="Eio-ro-b1n"/>
                             <constraint firstItem="gkI-Wr-hqW" firstAttribute="top" secondItem="v9S-1E-28Y" secondAttribute="bottom" constant="10" id="Kct-NS-USV"/>
@@ -138,13 +158,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="v9S-1E-28Y" secondAttribute="trailing" id="ZGl-kC-jZr"/>
                             <constraint firstItem="gkI-Wr-hqW" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leading" id="ZMl-Ax-tpk"/>
                             <constraint firstItem="V6F-S7-lxF" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leadingMargin" id="cUb-RQ-BrD"/>
+                            <constraint firstItem="8gj-yJ-IgO" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leadingMargin" id="cdA-Ew-r8l"/>
                             <constraint firstItem="v9S-1E-28Y" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leadingMargin" id="eMZ-SP-SzM"/>
                             <constraint firstItem="Kah-Uv-wZi" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leadingMargin" id="gkC-2r-wrM"/>
                             <constraint firstItem="Kah-Uv-wZi" firstAttribute="top" secondItem="V6F-S7-lxF" secondAttribute="bottom" constant="10" id="nAO-4i-yi1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8gj-yJ-IgO" secondAttribute="trailing" id="omX-Wx-LHv"/>
                             <constraint firstItem="UaO-1t-L7J" firstAttribute="leading" secondItem="mBb-UL-Yb9" secondAttribute="leadingMargin" id="pQa-zz-1NP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryTextField" destination="8gj-yJ-IgO" id="dA1-sm-6Nx"/>
                         <outlet property="contentsTextView" destination="v9S-1E-28Y" id="DHg-NL-Yfx"/>
                         <outlet property="datePicker" destination="gkI-Wr-hqW" id="W3T-Lg-T2i"/>
                         <outlet property="titleTextField" destination="V6F-S7-lxF" id="9ua-pV-5Ix"/>

@@ -10,15 +10,17 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchField: UITextField!
     let realm = try! Realm()
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        searchField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = taskArray[indexPath.row]
-        cell.textLabel?.text = task.title
+        cell.textLabel?.text = "【" + task.category + "】" + task.title
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let dateString:String = formatter.string(from: task.date as Date)
@@ -89,6 +91,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let word:String! = searchField.text
+        if word == "" || word == nil {
+            self.taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+        }else{
+            self.taskArray = try! Realm().objects(Task.self).filter("category = %@",word).sorted(byKeyPath: "date", ascending: false)
+        }
+        searchField.resignFirstResponder()
+        tableView.reloadData()
+        return true
+    }
+    
 }
 
